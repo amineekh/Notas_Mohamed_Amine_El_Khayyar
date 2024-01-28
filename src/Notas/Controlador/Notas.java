@@ -104,7 +104,7 @@ public class Notas extends JFrame{
                 JFrame frame = new JFrame( "Ver informacion"); frame.setContentPane(new Ver_nota().Panel_ver);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 frame.pack();
-                frame.setBounds(0,  0,  400, 500);
+                frame.setBounds(0,  0,  300, 300);
                 frame.setVisible(true);
 
             }

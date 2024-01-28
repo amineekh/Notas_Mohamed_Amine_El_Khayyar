@@ -132,6 +132,7 @@
         </constraints>
         <properties>
           <background color="-16777088"/>
+          <foreground color="-1799"/>
         </properties>
         <border type="none"/>
         <children>
