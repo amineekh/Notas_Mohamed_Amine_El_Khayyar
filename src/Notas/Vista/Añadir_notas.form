@@ -36,7 +36,7 @@
                 <properties>
                   <background color="-11374081"/>
                   <enabled value="true"/>
-                  <font style="1"/>
+                  <font/>
                   <foreground color="-1799"/>
                   <text value="Nombre*"/>
                 </properties>

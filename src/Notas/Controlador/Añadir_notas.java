@@ -36,6 +36,8 @@ class Añadir_notas extends JFrame {
         frame.setContentPane(Panel_1);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Cierra solo esta ventana al cerrarla
         frame.pack();
+        // Evitar que la ventana sea maximizable
+        frame.setResizable(false);
         frame.setVisible(true);
         frame.setBounds(0,0,300,300);
 

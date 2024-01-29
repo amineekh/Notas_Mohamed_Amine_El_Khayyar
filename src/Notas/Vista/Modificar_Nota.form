@@ -5,7 +5,9 @@
     <constraints>
       <xy x="20" y="20" width="500" height="400"/>
     </constraints>
-    <properties/>
+    <properties>
+      <background color="-16777088"/>
+    </properties>
     <border type="none"/>
     <children>
       <grid id="afdac" binding="Panel_titulo" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
@@ -13,7 +15,9 @@
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-16777088"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="f88b0" class="javax.swing.JLabel" binding="Titulo_Modificar_label">
@@ -21,7 +25,10 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="Modificar Nota"/>
+              <background color="-393219"/>
+              <font name="Castellar" size="18" style="1"/>
+              <foreground color="-393219"/>
+              <text value="MODIFICAR NOTA"/>
             </properties>
           </component>
         </children>
@@ -31,7 +38,9 @@
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-16777088"/>
+        </properties>
         <border type="none"/>
         <children>
           <grid id="371" layout-manager="GridBagLayout">
@@ -40,7 +49,10 @@
                 <preferred-size width="132" height="16"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-11374081"/>
+              <foreground color="-393219"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="f58c" class="javax.swing.JLabel" binding="label_modificar_nombre">
@@ -49,7 +61,8 @@
                   <gridbag weightx="1.0" weighty="1.0"/>
                 </constraints>
                 <properties>
-                  <text value="Nombre"/>
+                  <foreground color="-393219"/>
+                  <text value="Nombre*"/>
                 </properties>
               </component>
             </children>
@@ -61,7 +74,10 @@
                 <preferred-size width="132" height="24"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-11374081"/>
+              <foreground color="-393219"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="fb4a5" class="javax.swing.JLabel" binding="label_modificar_apellido">
@@ -69,6 +85,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
+                  <foreground color="-393219"/>
                   <text value="Apellido"/>
                 </properties>
               </component>
@@ -81,7 +98,10 @@
                 <preferred-size width="132" height="24"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-11374081"/>
+              <foreground color="-393219"/>
+            </properties>
             <border type="none"/>
             <children>
               <component id="60a02" class="javax.swing.JLabel" binding="label_modificar_nota">
@@ -89,7 +109,8 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Nota"/>
+                  <foreground color="-393219"/>
+                  <text value="Nota*"/>
                 </properties>
               </component>
             </children>
@@ -100,7 +121,10 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-11374081"/>
+              <foreground color="-393219"/>
+            </properties>
           </component>
           <component id="c4d47" class="javax.swing.JTextField" binding="field_modificar_apellido">
             <constraints>
@@ -108,7 +132,10 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-11374081"/>
+              <foreground color="-393219"/>
+            </properties>
           </component>
           <component id="efaa0" class="javax.swing.JTextField" binding="field_modificar_nota">
             <constraints>
@@ -116,7 +143,10 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-11374081"/>
+              <foreground color="-393219"/>
+            </properties>
           </component>
         </children>
       </grid>
@@ -125,7 +155,9 @@
         <constraints>
           <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-16777088"/>
+        </properties>
         <border type="none"/>
         <children>
           <component id="190d6" class="javax.swing.JButton" binding="aceptar_btn_modificar">
@@ -133,6 +165,9 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-11374081"/>
+              <font name="Arial" size="16" style="1"/>
+              <foreground color="-393219"/>
               <text value="Aceptar"/>
             </properties>
           </component>
@@ -141,6 +176,10 @@
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
+              <background color="-11374081"/>
+              <enabled value="true"/>
+              <font name="Arial" size="16" style="1"/>
+              <foreground color="-393219"/>
               <text value="Cancelar"/>
             </properties>
           </component>

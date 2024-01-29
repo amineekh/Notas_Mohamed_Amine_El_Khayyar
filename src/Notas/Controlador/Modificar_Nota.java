@@ -31,6 +31,8 @@ public class Modificar_Nota {
         frame.setContentPane(Mainpanel_modificar);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.pack();
+        // Evitar que la ventana sea maximizable
+        frame.setResizable(false);
         frame.setVisible(true);
         frame.setBounds(0, 0, 300, 300);
 

@@ -101,10 +101,12 @@ public class Notas extends JFrame{
 
                 notaseleccionada = new Nota (nombre, apellidos, nota);
 
-                JFrame frame = new JFrame( "Ver informacion"); frame.setContentPane(new Ver_nota().Panel_ver);
+                JFrame frame = new JFrame( "Ver Nota"); frame.setContentPane(new Ver_nota().Panel_ver);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                // Evitar que la ventana sea maximizable
+                frame.setResizable(false);
                 frame.pack();
-                frame.setBounds(0,  0,  300, 300);
+                frame.setBounds(0,  0,  245, 300);
                 frame.setVisible(true);
 
             }
@@ -185,6 +187,8 @@ public class Notas extends JFrame{
     public static void main(String[] args) {
         JFrame frame = new JFrame("Notas");
         frame.setContentPane(new Notas().Mainpanael);
+        // Evitar que la ventana sea maximizable
+        frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

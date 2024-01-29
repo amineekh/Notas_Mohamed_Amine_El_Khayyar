@@ -34,8 +34,11 @@ public class Ver_nota extends  JFrame{
         Boton_ok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Cerrar la ventana sin realizar ninguna acción
-                dispose();
+                // Cerrar la ventana
+                JOptionPane.showMessageDialog(null, "Esos son todos los datos de la nota selecionada",
+                        "Nota", JOptionPane.WARNING_MESSAGE);
+
+
             }
         });
     }
