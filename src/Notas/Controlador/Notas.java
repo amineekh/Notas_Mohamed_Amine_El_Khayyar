@@ -1,5 +1,5 @@
+// Importar paquetes y clases necesarias
 package Notas.Controlador;
-
 
 import Notas.Modelo.Nota;
 
@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Notas extends JFrame{
+// Definición de la clase, extiende JFrame para funcionalidad de GUI
+public class Notas extends JFrame {
 
+    // Variables de instancia para componentes Swing
     private JPanel Mainpanael;
     private JPanel Panel_titulo;
     private JPanel Panel_Tabla;
@@ -28,35 +30,40 @@ public class Notas extends JFrame{
     private JPanel panel_ayuda;
     private JButton ayudaButton;
 
-    private  JTextField nombre_Field;
+    // Campos de texto para entrada de usuario
+    private JTextField nombre_Field;
     private JTextField apellido_Field;
     private JTextField notas_Field;
 
+    // Modelo estático compartido entre instancias de la clase Notas
     private static DefaultTableModel model;
 
-    public static Nota notaseleccionada = null; // Usuario seleccionado, accesible desde otras clases
+    // Nota seleccionada, accesible desde otras clases
+    public static Nota notaseleccionada = null;
 
-    private ArrayList<Nota> notas = new ArrayList<Nota>(); // Lista para almacenar objetos de Usuario
+    // Lista para almacenar objetos Nota
+    private ArrayList<Nota> notas = new ArrayList<Nota>();
 
+    // Constructor
     public Notas() {
+        // Inicializar el modelo de la tabla
         model = new DefaultTableModel();
 
-
+        // Crear la tabla y configurar la interfaz de usuario (UI)
         crear_tabla();
         Configuracion_UI_botones();
         configurarMouseListener();  // Configurar el MouseListener para seleccionar toda la fila
-
-
     }
 
-
+    // Método para configurar botones y acciones de la UI
     private void Configuracion_UI_botones() {
-
+        // Agregar un ListSelectionListener para habilitar/deshabilitar botones según la selección de fila
         table.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int seleccionar_fila = table.getSelectedRow();
 
+                // Habilitar/deshabilitar botones según la selección de fila
                 if (seleccionar_fila >= 0) {
                     Modificar_boton.setEnabled(true);
                     Eliminar_boton.setEnabled(true);
@@ -65,65 +72,68 @@ public class Notas extends JFrame{
                     Modificar_boton.setEnabled(false);
                     Eliminar_boton.setEnabled(false);
                     vernota_boton.setEnabled(false);
-
                 }
-
             }
         });
 
+        // ActionListener para el botón de ayuda (ayudaButton)
         ayudaButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Mostrar un mensaje de ayuda utilizando JOptionPane
-                JOptionPane.showMessageDialog(Notas.this, "Para añadir nueva nota debes rellenar los campos obligatorios y para acitvar los botones de Modificar, Eliminar y Ver nota debes selecionar una fila de la tabla", "Ayuda", JOptionPane.INFORMATION_MESSAGE);
+                // Mostrar un mensaje de ayuda usando JOptionPane
+                JOptionPane.showMessageDialog(Notas.this,
+                        "Para añadir nueva nota debes rellenar los campos obligatorios y para activar los botones de Modificar, Eliminar y Ver nota debes seleccionar una fila de la tabla",
+                        "Ayuda", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
-
-        // Configuracion de los botones
+        // ActionListener para el botón Añadir (Añadir_boton)
         Añadir_boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Abrir una nueva ventana para agregar notas
                 Añadir_notas ventana = new Añadir_notas();
                 ventana.mostrarventana(Notas.this);
-
             }
         });
 
+        // ActionListener para el botón Ver nota (vernota_boton)
         vernota_boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                int selectedRow=  table.getSelectedRow();
-                String nombre= (String) table.getValueAt(selectedRow, 0);
+                // Obtener datos de la fila seleccionada y crear un objeto Nota
+                int selectedRow = table.getSelectedRow();
+                String nombre = (String) table.getValueAt(selectedRow, 0);
                 String apellidos = (String) table.getValueAt(selectedRow, 1);
                 String nota = (String) table.getValueAt(selectedRow, 2);
 
-                notaseleccionada = new Nota (nombre, apellidos, nota);
+                notaseleccionada = new Nota(nombre, apellidos, nota);
 
-                JFrame frame = new JFrame( "Ver Nota"); frame.setContentPane(new Ver_nota().Panel_ver);
+                // Crear y mostrar un nuevo JFrame para ver la nota
+                JFrame frame = new JFrame("Ver Nota");
+                frame.setContentPane(new Ver_nota().Panel_ver);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                // Evitar que la ventana sea maximizable
                 frame.setResizable(false);
                 frame.pack();
-                frame.setBounds(0,  0,  245, 300);
+                frame.setBounds(0, 0, 245, 300);
                 frame.setVisible(true);
-
             }
         });
 
+        // ActionListener para el botón Modificar (Modificar_boton)
         Modificar_boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Obtener datos de la fila seleccionada
                 int selectedRow = table.getSelectedRow();
 
-                if (selectedRow != -1 ) {
-                    // Obtener los datos de la fila seleccionada
+                if (selectedRow != -1) {
+                    // Obtener datos de la fila seleccionada
                     String nombre = (String) table.getValueAt(selectedRow, 0);
                     String apellido = (String) table.getValueAt(selectedRow, 1);
                     String nota = (String) table.getValueAt(selectedRow, 2);
 
-                    // Crear instancia de Modificar_Nota y pasarle los datos
+                    // Crear una instancia de Modificar_Nota y pasarle los datos
                     Modificar_Nota modificarNotaVentana = new Modificar_Nota();
                     modificarNotaVentana.mostrarVentana(Notas.this, nombre, apellido, nota);
                 } else {
@@ -132,32 +142,43 @@ public class Notas extends JFrame{
             }
         });
 
+        // ActionListener para el botón Eliminar (Eliminar_boton)
         Eliminar_boton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = table.getSelectedRow();
-                // Verifica si se ha seleccionado una fila antes de eliminarla
+
+                // Verificar si se ha seleccionado una fila antes de intentar eliminar
                 if (selectedRow != -1) {
-                    // Muestra una confirmación antes de eliminar la fila seleccionada
-                    int confirm = JOptionPane.showConfirmDialog(Notas.this, "¿Está seguro de que desea eliminar este usuario?", "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+                    // Mostrar una confirmación antes de eliminar la fila seleccionada
+                    int confirm = JOptionPane.showConfirmDialog(Notas.this,
+                            "¿Está seguro de que desea eliminar este usuario?",
+                            "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+
                     if (confirm == JOptionPane.YES_OPTION) {
-                        model.removeRow(selectedRow); // Elimina la fila seleccionada del modelo de la tabla
+                        model.removeRow(selectedRow); // Eliminar la fila seleccionada del modelo de la tabla
                     }
                 } else {
-                    // Muestra un mensaje de advertencia si no se ha seleccionado ninguna fila para eliminar
+                    // Mostrar un mensaje de advertencia si no se ha seleccionado ninguna fila para eliminar
                     JOptionPane.showMessageDialog(Notas.this, "Por favor, seleccione una fila para eliminar.");
                 }
             }
         });
-
     }
 
+
+    // Método privado para configurar un MouseListener en la tabla
     private void configurarMouseListener() {
+        // Agregar un MouseListener a la tabla
         table.addMouseListener(new MouseAdapter() {
             @Override
+            // Sobrescribir el método mouseClicked del MouseAdapter
             public void mouseClicked(MouseEvent e) {
+                // Verificar si se hizo clic una vez
                 if (e.getClickCount() == 1) {
+                    // Obtener la fila seleccionada en función de la posición del clic
                     int selectedRow = table.rowAtPoint(e.getPoint());
+                    // Establecer la selección de fila en la tabla
                     table.setRowSelectionInterval(selectedRow, selectedRow);
 
                     // También puedes agregar esta línea para asegurarte de que toda la fila esté seleccionada
@@ -166,15 +187,20 @@ public class Notas extends JFrame{
             }
         });
     }
+
+    // Método para obtener acceso a la tabla
     public JTable getTable() {
         return table;
     }
 
+    // Método para agregar una nueva fila a la tabla
     public static void agregar_fila(String nombre, String apellido, String nota) {
-        // Añade una nueva fila a la tabla con los datos proporcionados
+        // Añadir una nueva fila a la tabla con los datos proporcionados
         String[] fila = {nombre, apellido, nota};
         model.addRow(fila);
     }
+
+    // Método para crear la tabla
     private void crear_tabla() {
         // Agregar columnas al modelo de la tabla si es necesario
         model.addColumn("Nombre");
@@ -184,7 +210,9 @@ public class Notas extends JFrame{
         table.setModel(model);
     }
 
+    // Método principal para iniciar la aplicación
     public static void main(String[] args) {
+        // Crear un JFrame y configurar su panel de contenido con una instancia de la clase Notas
         JFrame frame = new JFrame("Notas");
         frame.setContentPane(new Notas().Mainpanael);
         // Evitar que la ventana sea maximizable
@@ -193,7 +221,4 @@ public class Notas extends JFrame{
         frame.pack();
         frame.setVisible(true);
     }
-
 }
-
-

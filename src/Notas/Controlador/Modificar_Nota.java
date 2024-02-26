@@ -5,7 +5,9 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// Definición de la clase Modificar_Nota
 public class Modificar_Nota {
+    // Componentes de la interfaz de usuario (UI)
     private JPanel Mainpanel_modificar;
     private JPanel Panel_titulo;
     private JPanel Panel_modificar;
@@ -20,11 +22,12 @@ public class Modificar_Nota {
     private JButton cancelar_btn_modificar;
     private JLabel Titulo_Modificar_label;
 
+    // Constructor vacío
     public Modificar_Nota() {
-
 
     }
 
+    // Método para mostrar la ventana de modificación de nota
     public void mostrarVentana(final Notas notas, String nombre, String apellido, String nota) {
         // Mostrar la ventana
         JFrame frame = new JFrame("Modificar Nota");
@@ -41,6 +44,7 @@ public class Modificar_Nota {
         field_modificar_apellido.setText(apellido);
         field_modificar_nota.setText(nota);
 
+        // ActionListener para el botón de aceptar
         aceptar_btn_modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,9 +71,11 @@ public class Modificar_Nota {
             }
         });
 
+        // ActionListener para el botón de cancelar
         cancelar_btn_modificar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Cerrar la ventana
                 JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(Mainpanel_modificar);
                 frame.dispose();
             }
